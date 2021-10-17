@@ -85,7 +85,7 @@ session_start();
                 <?php include "includes/page_navigationBar.php"; ?> 
 
                 <!-- DASHBOARD PAGE -->
-                <?php include "pages/dashboard.php"; ?> 
+                <?php include "pages/page_Dashboard.php"; ?> 
 
                 <!-- FOOTER HERE -->
                 <?php include "includes/page_footer.php"; ?> 
