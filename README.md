@@ -1,5 +1,6 @@
 # QBCore-Admin-Panel
 LIVE PREVIEW (Current progress): https://panel.aidanoh.art/
+<br>
 JOIN DISCORD FOR UPDATES: https://discord.gg/SjSCu67tSv
 <br>
 
