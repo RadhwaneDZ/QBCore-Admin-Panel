@@ -1,6 +1,4 @@
 # QBCore-Admin-Panel
-<br>
-
 LIVE PREVIEW (Current progress): https://panel.aidanoh.art/
 <br>
 
