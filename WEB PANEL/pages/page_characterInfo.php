@@ -41,10 +41,10 @@ foreach($character as $row)
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-car icon-gradient qb-core">
+                <i class="pe-7s-id icon-gradient qb-core">
                 </i>
             </div>
-                <div>Character Information
+                <div>Character Information - <?php echo $citizenid; ?> (<?php echo $charinfo->{'firstname'}; ?> <?php echo $charinfo->{'lastname'}; ?>)
                     <div class="page-title-subheading">On this page you can see more information about any character! If nothing shows go back to the Search Characters tab and try again!
                 </div>
             </div>
@@ -75,7 +75,6 @@ foreach($character as $row)
                 <div class="card-header">General Information (In-Character)</div>
                     <div class="card-body">
                     <p><b>Character Name:</b> <?php echo $charinfo->{'firstname'}; ?> <?php echo $charinfo->{'lastname'}; ?></p>
-                    <p><b>Citizen ID: </b> <?php echo $citizenid; ?></p>
                     <p><b>Nationality:</b> <?php echo $charinfo->{'nationality'}; ?></p>
                     <p><b>Gender:</b> <?php echo $charinfo->{'gender'}; ?></p>
                     <p><b>Birthdate:</b> <?php echo $charinfo->{'birthdate'}; ?></p>
@@ -106,23 +105,71 @@ foreach($character as $row)
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card text-center">
-                <div class="card-header">Job & Gang Information</div>
-                    <div class="card-body">
-                    <p><b>LEGAL JOB INFORMATION</b></p>
-                    <p><b>Job:</b> <?php echo $job->{'label'}; ?></p>
-                    <p><b>Job Grade:</b> <?php echo $job->{'grade, name'}; ?></p> <!-- GOTTA FIGURE OUT HOW TO DO JSON INSIDE JSON? *if that make sense* -->
-                    <p><b>Job Payment:</b> <?php echo $job->{'payment'}; ?></p>
-                    <p><b>GANG AFFILIATION INFORMATION</b></p>
-                    <p><b>Gang Name:</b> <?php echo $gang->{'label'}; ?></p>
-                    <p><b>Gang Rank:</b> <?php echo $gang->{'name'}; ?></p>
-                </div>
-            </div>
-        </div>
         </div>
     </div>
 </div>
+<br>
+
+<div class="tab-content">
+<div class="tab-pane tabs-animation fade show active" id="tab-content-1" role="tabpanel">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card text-center">
+                <div class="card-header">Job Information</div>
+                    <div class="card-body">
+                    <p><b>Job:</b> <?php echo $job->{'label'}; ?></p>
+                    <p><b>Job Grade:</b> <?php echo $job->{'grade, name'}; ?></p> <!-- GOTTA FIGURE OUT HOW TO DO JSON INSIDE JSON? *if that make sense* -->
+                    <p><b>Job Payment:</b> $<?php echo $job->{'payment'}; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card text-center">
+                <div class="card-header">Gang Information</div>
+                    <div class="card-body">
+                    <p><b>Gang Name:</b> <?php echo $gang->{'label'}; ?></p>
+                    <p><b>Gang Rank:</b> <?php echo $gang->{'label'}; ?></p>
+                    <p><b>Is Boss?</b> <?php echo $gang->{'isboss'}; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="main-card mb-9 card"> <!-- TABLE -->
+            <div class="card-header">Apartments Information</div>
+                <div class="card-body"><h5 class="card-title"></h5>
+                    <table class="mb-0 table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Apartment Name</th>
+                            <th>Apartment Type</th>
+                            <th>Apartment Specific Location</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <?php
+                                $apartment = $database->query("SELECT * FROM apartments WHERE citizenid='$citizenid'");
+
+                                foreach($apartment as $newrow)
+                                {
+
+                                echo 
+                                '<td>1</td>
+                                <td>'. $newrow['name'] .'</td>
+                                <td>'. $newrow['type'] .'</td>
+                                <td>'. $newrow['label'] .'</td>
+                                </tr>';
+                                }
+                            ?>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 
