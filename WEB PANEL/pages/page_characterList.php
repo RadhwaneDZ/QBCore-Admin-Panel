@@ -26,11 +26,11 @@ try{
     </div>
 </div>
 
-<div class="row">
+<div class="newrow">
 	<div class="col-12">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="header-title">All Characters</h4>
+				<h4 class="header-title"></h4>
                     <table id="basic-datatable" class="table dt-responsive nowrap">
                         <thead>
                             <tr>
@@ -43,18 +43,18 @@ try{
                         </thead>
                     <tbody>
                         <?php
-                            $result = $database->query("SELECT * FROM players");
-                            foreach($result as $row)
+                            $uniquecharacter = $database->query("SELECT * FROM players");
+                            foreach($uniquecharacter as $newrow)
                             {
-                            $json = $row["charinfo"];
+                            $json = $newrow["charinfo"];
                             $charactername = json_decode($json);
 
                             echo 
-                            '<td>'. $row['id'] .'</td>
-                            <td><a id="accentcolor" href="characterInfo.php?citizenid=' . $row['citizenid'] . '">'. $charactername->{'firstname'}. ' '.$charactername->{'lastname'}. ' ('. $row['citizenid'].')</td>
-                            <td>'. $row['license'] .'</td>
-                            <td>'. $row['name'] .'</td>
-                            <td>'. $row['last_updated'] .'</td>
+                            '<td>'. $newrow['id'] .'</td>
+                            <td><a id="accentcolor" href="characterInfo.php?citizenid=' . $newrow['citizenid'] . '">'. $charactername->{'firstname'}. ' '.$charactername->{'lastname'}. ' ('. $newrow['citizenid'].')</td>
+                            <td>'. $newrow['license'] .'</td>
+                            <td>'. $newrow['name'] .'</td>
+                            <td>'. $newrow['last_updated'] .'</td>
                             </tr>';
                             }
                         ?>
