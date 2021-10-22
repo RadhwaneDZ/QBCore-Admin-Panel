@@ -1,7 +1,3 @@
-<?php
-require_once(__DIR__ . "/config.php");
-?>
-
 <div class="app-main__outer">
 <div class="app-main__inner">
     <div class="app-page-title">

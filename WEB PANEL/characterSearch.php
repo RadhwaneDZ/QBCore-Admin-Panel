@@ -102,13 +102,13 @@ session_start();
 
 
             <!-- NAVIGATION BAR -->
-            <?php include "inserts/insert_navBar.php"; ?> 
+            <?php include "inserts/insert_navBar.html"; ?> 
 
             <!-- PAGE INSER HERE -->
             <?php include "pages/page_characterList.php"; ?> 
             
             <!-- FOOTER -->
-            <?php include "inserts/insert_footer.php"; ?> 
+            <?php include "inserts/insert_footer.html"; ?> 
         </div>
     </div>
 </div>
