@@ -4,7 +4,6 @@ try{
 } catch(PDOException $ex)
 {
 	echo "Could not connect to your database. Please Make sure to Check your credentials in your config file! ".$ex->getMessage();
-	die();
 }
 
 $citizenid = $_GET["citizenid"];
@@ -25,6 +24,8 @@ foreach($character as $row)
 
     $jsonmoney= $row["money"];
     $money = json_decode($jsonmoney);
+    $moneyformatted = number_format($money);
+
 
     $jsonjob= $row["job"];
     $job = json_decode($jsonjob);
