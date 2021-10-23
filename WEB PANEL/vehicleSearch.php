@@ -103,7 +103,7 @@ session_start();
             <?php include "inserts/insert_navBar.html"; ?> 
 
             <!-- PAGE INSER HERE -->
-            <?php include "pages/page_characterInfo.php"; ?> 
+            <?php include "pages/page_vehicleList.php"; ?> 
 
             <!-- FOOTER -->
             <?php include "inserts/insert_footer.html"; ?> 
