@@ -22,7 +22,23 @@
             <div class="widget-content-wrapper">
                 <div class="widget-content-left">
                     <div class="widget-heading">Total Characters</div>
-                    <div class="widget-subheading">Total number of unique characters created</div>
+                    <div class="widget-subheading">Number of unique characters created on the server</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-danger">a number</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-xl-4">
+    <div class="card mb-3 widget-content">
+        <div class="widget-content-outer">
+            <div class="widget-content-wrapper">
+                <div class="widget-content-left">
+                    <div class="widget-heading">Total Users</div>
+                    <div class="widget-subheading">Number of unique players that have joined the server</div>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-danger">a number</div>
@@ -38,23 +54,7 @@
             <div class="widget-content-wrapper">
                 <div class="widget-content-left">
                     <div class="widget-heading">Total Bans</div>
-                    <div class="widget-subheading">Total number of unique bans served</div>
-                </div>
-                <div class="widget-content-right">
-                    <div class="widget-numbers text-danger">a number</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-md-6 col-xl-4">
-    <div class="card mb-3 widget-content">
-        <div class="widget-content-outer">
-            <div class="widget-content-wrapper">
-                <div class="widget-content-left">
-                    <div class="widget-heading">Total Notes</div>
-                    <div class="widget-subheading">Total number of unique notes served</div>
+                    <div class="widget-subheading">Total number of unique bans served ever</div>
                 </div>
                 <div class="widget-content-right">
                     <div class="widget-numbers text-danger">a number</div>
