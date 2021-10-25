@@ -1,35 +1,26 @@
 <?php
 try{
-	$database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-} catch(PDOException $ex)
-{
-	echo "Could not connect to your database. Please Make sure to Check your credentials in your config file! ".$ex->getMessage();
+    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
+    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
 }
 
 $citizenid = $_GET["citizenid"];
 $character = $database->query("SELECT * FROM players WHERE citizenid = '$citizenid'");
-
 foreach($character as $row) 
 {
     $charid = $row["id"];
     $rockstar = $row["license"];
     $owner = $row["name"];
     $lastplayed = $row["last_updated"];
-
     $jsoncharinfo = $row["charinfo"];
     $charinfo = json_decode($jsoncharinfo);
-
     $jsonmetadata = $row["metadata"];
     $metadata = json_decode($jsonmetadata);
-
     $jsonmoney= $row["money"];
     $money = json_decode($jsonmoney);
     $moneyformatted = number_format($money);
-
-
     $jsonjob= $row["job"];
     $job = json_decode($jsonjob);
-
     $jsongang= $row["gang"];
     $gang = json_decode($jsongang);
 }
@@ -124,8 +115,6 @@ foreach($character as $row)
             </div>
         </div>
 
-
-
         <div class="col-lg-4">
             <div class="card text-center">
                 <div class="card-header">Gang Information</div>
@@ -137,7 +126,7 @@ foreach($character as $row)
             </div>
         </div>
 
-        <div class="main-card mb-9 card"> <!-- TABLE -->
+        <div class="main-card mb-9 card">
             <div class="card-header">Apartments Information</div>
                 <div class="card-body"><h5 class="card-title"></h5>
                     <table class="mb-0 table table-hover">
@@ -154,7 +143,7 @@ foreach($character as $row)
                             <?php
                                 $apartment = $database->query("SELECT * FROM apartments WHERE citizenid='$citizenid'");
                                 foreach($apartment as $newrow)
-                                {
+                                
                                 echo 
                                 '<td>1</td>
                                 <td>'. $newrow['name'] .'</td>

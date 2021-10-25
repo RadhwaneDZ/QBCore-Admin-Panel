@@ -1,10 +1,7 @@
 <?php
 try{
-	$database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-} catch(PDOException $ex)
-{
-	echo "Could not connect to your database. Please Make sure to Check your credentials in your config file! ".$ex->getMessage();
-	die();
+    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
+    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
 }
 ?>
 
@@ -43,14 +40,11 @@ try{
                     <tbody>
                         <?php
                             $uniquecharacter = $database->query("SELECT * FROM players");
-                            foreach($uniquecharacter as $newrow)
-                            {
-                            $json = $newrow["charinfo"];
-                            $charactername = json_decode($json);
+                            foreach($uniquecharacter as $newrow){} 
+                                $json = $newrow["charinfo"];
+                                $charactername = json_decode($json);
 
                             echo 
-
-
                             '<td>'. $newrow['id'] .'</td>
                             <td><a id="accentcolor" href="characterInfo.php?citizenid=' . $newrow['citizenid'] . '">'. $charactername->{'firstname'}. ' '.$charactername->{'lastname'}. ' ('. $newrow['citizenid'].')</td>
                             <td>'. $newrow['license'] .'</td>
