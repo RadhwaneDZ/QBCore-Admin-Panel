@@ -1,10 +1,7 @@
 <?php
 try{
-	$database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-} catch(PDOException $ex)
-{
-	echo "Could not connect to your database. Please Make sure to Check your credentials in your config file! ".$ex->getMessage();
-	die();
+    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
+    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
 }
 ?>
 
@@ -34,8 +31,8 @@ try{
                         <thead>
                             <tr>
                                 <th>Vehicle ID</th>
-                                <th>Owned By (Click to View) </th>
                                 <th>License Plate</th>
+                                <th>Owned By (Citizen ID) </th>
                                 <th>Vehicle Model</th>
                                 <th>Vehicle Model Hash</th>
                                 <th>Current Garage</th>
@@ -44,17 +41,23 @@ try{
                     <tbody>
                         <?php
                             $uniquevehicle = $database->query("SELECT * FROM player_vehicles");
+                            foreach($uniquevehicle as $newrow){
+                                $citid = $newrow['citizenid'];
 
-                            foreach($uniquevehicle as $newrow)
-                            {
+                            $charname = $database->query("SELECT * FROM players WHERE citizenid='$citid'");
+                            foreach($charname as $newrow2){
+                                $json = $newrow2["charinfo"];
+                                $charactername = json_decode($json);
+                            }
+                            
                             echo 
-                            '<td>'. $newrow['id'] .'</td>
-                            <td><a id="accentcolor" href="characterInfo.php?citizenid=' . $newrow['citizenid'] . '">'. $newrow['citizenid'].' </td>
-                            <td><a id="accentcolor" href="vehicleInfo.php?plate=' . $newrow['plate'] . '">'. $newrow['plate'].' </td>
-                            <td>'. $newrow['vehicle'] .'</td>
-                            <td>'. $newrow['hash'] .'</td>
-                            <td>'. $newrow['garage'] .'</td>
-                            </tr>';
+                                '<td>'. $newrow['id'] .'</td>
+                                <td><a id="accentcolor" href="vehicleInfo.php?plate=' . $newrow['plate'] . '">'. $newrow['plate'].' </td>
+                                <td><a id="accentcolor" href="characterInfo.php?citizenid=' . $newrow['citizenid'] . '">'. $charactername->{'firstname'}. ' '.$charactername->{'lastname'}. ' ('. $newrow['citizenid'].')</td>
+                                <td>'. $newrow['vehicle'] .'</td>
+                                <td>'. $newrow['hash'] .'</td>
+                                <td>'. $newrow['garage'] .'</td>
+                                </tr>';
                             }
                         ?>
                     </tbody>
