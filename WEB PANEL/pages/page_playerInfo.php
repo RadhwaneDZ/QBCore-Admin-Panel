@@ -1,20 +1,14 @@
 <?php
-
 try{
-	$database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-} catch(PDOException $ex)
-{
-	echo "Could not connect to your database. Please Make sure to Check your credentials in your config file! ".$ex->getMessage();
-	die();
+    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
+    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
 }
 
 $usersession = $_GET["playerId"];
-
 $result = $database->query("SELECT * FROM adminpanel_players WHERE ID = '$usersession'");
 foreach($result as $row) 
 {
-
-    $userID = $row["ID"];
+    $userID = $row["id"];
     $playername = $row["playername"];
     $discord = $row["discord"];
     $steam = $row["steam"];
@@ -68,7 +62,6 @@ foreach($result as $row)
                     <table class="mb-0 table table-hover">
                         <thead>
                         <tr>
-                            <th>Character ID</th>
                             <th>Character Name</th>
                             <th>Citizen ID</th>
                             <th>Last Active</th>
@@ -78,14 +71,12 @@ foreach($result as $row)
                         <tr>
                             <?php
                                 $character = $database->query("SELECT * FROM players WHERE license='$license'");
-                                foreach($character as $newrow)
-                                {
-                                $json = $newrow["charinfo"];
-                                $charactername = json_decode($json);
+                                foreach($character as $newrow){
+                                    $json = $newrow["charinfo"];
+                                    $charactername = json_decode($json);
 
-                                echo 
-                                '<td>'. $newrow['id'] .'</td>
-                                <td><a id="accentcolor" href="characterInfo.php?citizenid=' . $newrow['citizenid'] . '">'. $charactername->{'firstname'}. ' '.$charactername->{'lastname'}. '</td>
+                                echo
+                                '<td><a id="accentcolor" href="characterInfo.php?citizenid=' . $newrow['citizenid'] . '">'. $charactername->{'firstname'}. ' '.$charactername->{'lastname'}. '</td>
                                 <td>'. $newrow['citizenid'] .'</td>
                                 <td>'. $newrow['last_updated'] .'</td>
                                 </tr>';
@@ -127,8 +118,8 @@ foreach($result as $row)
             <tr>
             <?php
                 $note = $database->query("SELECT * FROM adminpanel_notes WHERE noteid='$userID'");
-                foreach($note as $newrow)
-                {
+                foreach($note as $newrow){
+                
                 echo 
                 '<td>'. $newrow['noteid'] .'</td>
                 <td>'. $newrow['punished_by'] .'</td>
@@ -161,9 +152,8 @@ foreach($result as $row)
             <tr>
             <?php
                 $note = $database->query("SELECT * FROM adminpanel_bans WHERE banid='$userID'");
-
-                foreach($note as $newrow)
-                {
+                foreach($note as $newrow){
+                
                 echo 
                 '<td>'. $newrow['noteid'] .'</td>
                 <td>'. $newrow['punished_by'] .'</td>

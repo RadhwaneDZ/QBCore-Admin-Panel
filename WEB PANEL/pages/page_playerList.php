@@ -1,11 +1,7 @@
 <?php
 try{
-	$database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-} catch(PDOException $ex)
-
-{
-	echo "Could not connect to your database. Please Make sure to Check your credentials in your config file! ".$ex->getMessage();
-	die();
+    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
+    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
 }
 ?>
 
@@ -45,12 +41,11 @@ try{
                     <tbody>
                         <?php
                             $uniqueuser = $database->query("SELECT * FROM adminpanel_players");
-
                             foreach($uniqueuser as $newrow)
-                            {
+                            
                             echo 
-                            '<td>'. $newrow['ID'] .'</td>
-                            <td><a id="accentcolor" href="playerInfo.php?playerId=' . $newrow['ID'] . '">'. $newrow['playername'].'</td>
+                            '<td>'. $newrow['id'] .'</td>
+                            <td><a id="accentcolor" href="playerInfo.php?playerId=' . $newrow['id'] . '">'. $newrow['playername'].'</td>
                             <td>'. $newrow['license'] .'</td>
                             <td>'. $newrow['discord'] .'</td>
                             <td>'. $newrow['steam'] .'</td>
