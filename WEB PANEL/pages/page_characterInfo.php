@@ -6,8 +6,7 @@ try{
 
 $citizenid = $_GET["citizenid"];
 $character = $database->query("SELECT * FROM players WHERE citizenid = '$citizenid'");
-foreach($character as $row) 
-{
+foreach($character as $row){
     $charid = $row["id"];
     $rockstar = $row["license"];
     $owner = $row["name"];
@@ -23,7 +22,7 @@ foreach($character as $row)
     $job = json_decode($jsonjob);
     $jsongang= $row["gang"];
     $gang = json_decode($jsongang);
-}
+ }
 ?>
 
 <div class="app-main__outer">
@@ -142,7 +141,7 @@ foreach($character as $row)
                         <tr>
                             <?php
                                 $apartment = $database->query("SELECT * FROM apartments WHERE citizenid='$citizenid'");
-                                foreach($apartment as $newrow)
+                                foreach($apartment as $newrow){
                                 
                                 echo 
                                 '<td>1</td>

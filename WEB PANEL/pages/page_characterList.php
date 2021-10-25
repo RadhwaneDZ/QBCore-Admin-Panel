@@ -40,7 +40,7 @@ try{
                     <tbody>
                         <?php
                             $uniquecharacter = $database->query("SELECT * FROM players");
-                            foreach($uniquecharacter as $newrow){} 
+                            foreach($uniquecharacter as $newrow){
                                 $json = $newrow["charinfo"];
                                 $charactername = json_decode($json);
 

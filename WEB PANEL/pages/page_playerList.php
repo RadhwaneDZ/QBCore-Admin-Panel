@@ -41,7 +41,7 @@ try{
                     <tbody>
                         <?php
                             $uniqueuser = $database->query("SELECT * FROM adminpanel_players");
-                            foreach($uniqueuser as $newrow)
+                            foreach($uniqueuser as $newrow){
                             
                             echo 
                             '<td>'. $newrow['id'] .'</td>
