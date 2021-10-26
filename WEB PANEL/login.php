@@ -18,18 +18,25 @@ session_start();
         <link rel="shortcut icon" href="assets/images/logo-fav.png">
         <link href="./main.css" rel="stylesheet">
     </head>
+
     <body>
-        <div class="app-wrapper-footer">
-            <div class="app-footer">
-                <div class="app-footer__inner">
-                    <div class="app-footer-right">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a href="https://github.com/aidanohart" class="nav-link">
-                                    QBCore Admin Panel - Made by aidanohart
-                                </a>
-                            </li>
-                        </ul>
+        <div id=loginpage>
+            <div class="main-card mb-3 card">
+                <div class="card text-center">
+                    <div class="card-footer card text-center">
+                        <b><?php echo SERVER_NAME;?> | Login Page</b>
+                    </div>
+
+                    <div class="card-body">Welcome to the <?php echo SERVER_NAME;?>'s Admin panel login page. Please login by clicking the "Login with Discord" button below to authorize your access to this site.<br>
+                        <br><button class="btn btn-primary">
+                            <b>LOGIN WITH DISCORD</b>   
+                        </button>
+                    </div>
+
+                    <div class="card-footer card text-center">
+                        <a href="https://github.com/aidanohart" class="nav-link">
+                        QBCore Admin Panel - Made by aidanohart
+                        </a>
                     </div>
                 </div>
             </div>
