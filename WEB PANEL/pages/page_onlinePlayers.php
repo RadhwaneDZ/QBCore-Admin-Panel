@@ -4,7 +4,7 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-car icon-gradient qb-core">
+                <i class="pe-7s-drawer icon-gradient qb-core">
                 </i>
             </div>
                 <div>All Online Players
