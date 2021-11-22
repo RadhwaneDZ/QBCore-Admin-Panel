@@ -3,9 +3,14 @@ try{
     $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
     $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
 }
-$result = $database->query("SELECT count(*) FROM players");
-$num_rows = mysqli_fetch_row($result)[0];
+$result = $database->query("SELECT count(*) FROM players"); 
+$Stat1 = $result->fetchColumn();
 
+$result2 = $database->query("SELECT count(*) FROM adminpanel_players"); 
+$Stat2 = $result2->fetchColumn();
+
+$result3 = $database->query("SELECT count(*) FROM adminpanel_bans"); 
+$Stat3 = $result3->fetchColumn();
 
 ?>
 
@@ -36,7 +41,7 @@ $num_rows = mysqli_fetch_row($result)[0];
                     <div class="widget-subheading">Number of unique characters created on the server</div>
                 </div>
                 <div class="widget-content-right">
-                    <div class="widget-numbers text-danger">a number</div>
+                    <div class="widget-numbers text-danger"><?php echo $Stat1; ?></div>
                 </div>
             </div>
         </div>
@@ -52,7 +57,7 @@ $num_rows = mysqli_fetch_row($result)[0];
                     <div class="widget-subheading">Number of unique players that have joined the server</div>
                 </div>
                 <div class="widget-content-right">
-                    <div class="widget-numbers text-danger"><?php echo $num_rows; ?></div>
+                    <div class="widget-numbers text-danger"><?php echo $Stat2; ?></div>
                 </div>
             </div>
         </div>
@@ -68,7 +73,7 @@ $num_rows = mysqli_fetch_row($result)[0];
                     <div class="widget-subheading">Total number of unique bans served ever</div>
                 </div>
                 <div class="widget-content-right">
-                    <div class="widget-numbers text-danger">a number</div>
+                    <div class="widget-numbers text-danger"><?php echo $Stat3; ?></div>
                 </div>
             </div>
         </div>
