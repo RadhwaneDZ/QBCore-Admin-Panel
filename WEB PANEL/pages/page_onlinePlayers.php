@@ -33,7 +33,7 @@
                         </thead>
                     <tbody>
                         <?php
-                            $json = file_get_contents('http://51.89.153.238:30136/players.json'); /* USING SOME RANDOM SERVER TO GET PLAYER LIST FOR NOW - https://www.gs4u.net/en/s/183472.html */
+                            $json = file_get_contents('http://74.91.124.242:30120/players.json'); /* USING SOME RANDOM SERVER TO GET PLAYER LIST FOR NOW - https://www.gs4u.net/en/s/145045.html */
                             $data = json_decode($json, true);
                             foreach ($data as $key => $newrow) {
                                 
