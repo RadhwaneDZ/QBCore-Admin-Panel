@@ -4,6 +4,20 @@ try{
     $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
 }
 
+$playername = $_GET["playername"];
+$discord = $_GET["discord"];
+$steam = $_GET["steam"];
+$license = $_GET["license"];
+
+function generateBanID($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 
 ?>
 
@@ -17,7 +31,7 @@ try{
                 </i>
             </div>
                 <div>Create New Ban
-                    <div class="page-title-subheading">You're currently creating a new ban for
+                    <div class="page-title-subheading">You're currently creating a new ban for <?php echo $playername ?>
                 </div>
             </div>
         </div>
@@ -30,16 +44,16 @@ try{
         <div class="card-body"><h5 class="card-title">Player Info</h5>
             <form class="">
                 <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Player Name</label>
-                    <div class="col-sm-10"><input class="form-control" readonly></div>
+                    <div class="col-sm-10"><input class="form-control" value="<?php echo $playername ?>" readonly></div>
                 </div>
                 <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Player's Discord ID</label>
-                    <div class="col-sm-10"><input class="form-control" placeholder="" readonly></div>
+                    <div class="col-sm-10"><input class="form-control" value="<?php echo $discord ?>" readonly></div>
                 </div>
                 <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Player's Steam Identifier</label>
-                    <div class="col-sm-10"><input class="form-control" placeholder="" readonly></div>
+                    <div class="col-sm-10"><input class="form-control" value="<?php echo $steam ?>" readonly></div>
                 </div>
                 <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Player's Rockstar License </label>
-                    <div class="col-sm-10"><input class="form-control" placeholder="" readonly></div>
+                    <div class="col-sm-10"><input class="form-control" value="<?php echo $license ?>" readonly></div>
                 </div>
                 <h5 class="card-title">Ban Length</h5>
                 FOR PERMENANT BANS: If you wish to issue a permenant ban, leave Months, Days & Hours all as 0<br>
@@ -53,11 +67,11 @@ try{
                     <div class="col-sm-10"><input class="form-control" input type="number" value="0"></div>
                 </div>
                 <h5 class="card-title">Other Ban Information</h5>
-                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Ban Unique ID</label>
-                    <div class="col-sm-10"><input class="form-control" readonly></div>
+                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Ban ID</label>
+                    <div class="col-sm-10"><input class="form-control" value="<?php echo generateBanID(); ?>" readonly></div>
                 </div>
-                <div class="position-relative row form-group"><label for="exampleText" class="col-sm-2 col-form-label">Ban Reason</label>
-                    <div class="col-sm-10"><textarea name="text" id="exampleText" class="form-control"></textarea></div>
+                <div class="position-relative row form-group"><label for="exampleEmail" class="col-sm-2 col-form-label">Ban Reason</label>
+                    <div class="col-sm-10"><input class="form-control" placeholder="Remember to include your ban reason!"></div>
                 </div>
                 <div class="position-relative row form-check">
                     <div class="col-sm-10 offset-sm-2">
