@@ -24,10 +24,10 @@ session_start();
             <div class="main-card mb-3 card">
                 <div class="card text-center">
                     <div class="card-footer card text-center">
-                        <b><?php echo SERVER_NAME;?> | Login Page</b>
+                        <b><?php echo SERVER_NAME;?> | Login</b>
                     </div>
 
-                    <div class="card-body">Welcome to the <?php echo SERVER_NAME;?>'s Admin panel login page. Please login by clicking the "Login with Discord" button below to authorize your access to this site.<br>
+                    <div class="card-body">Login using Discord now to get access to the panel. Please note that any unathorized attempts will be logged.<br>
                         <br><button class="btn btn-primary">
                             <b>LOGIN WITH DISCORD</b>   
                         </button>
