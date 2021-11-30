@@ -91,9 +91,9 @@ foreach($result as $row)
             <div class="card text-center">
                 <div class="card-header">Manage User Punishments</div>
                     <div class="card-body">
-                    <button class="mb-2 mr-2 btn btn-primary btn-lg btn-block"><a href="https://panel.aidanoh.art/newban.php?playername=<?php echo $playername; ?>&steam=<?php echo $steam; ?>&discord=<?php echo $discord; ?>&license=<?php echo $license; ?>">BAN PLAYER</button>
+                    <button class="mb-2 mr-2 btn btn-primary btn-lg btn-block"><a href="https://panel.aidanoh.art/newban.php?playername=<?php echo $playername; ?>&steam=<?php echo $steam; ?>&discord=<?php echo $discord; ?>&license=<?php echo $license; ?>">BAN PLAYER</a></button>
                     <button class="mb-2 mr-2 btn btn-primary btn-lg btn-block">KICK PLAYER</button>
-                    <button class="mb-2 mr-2 btn btn-primary btn-lg btn-block"><a href="https://panel.aidanoh.art/newnote.php?playername=<?php echo $playername; ?>&playerid=<?php echo $usersession; ?>">CREATE NEW NOTE</button>
+                    <button class="mb-2 mr-2 btn btn-primary btn-lg btn-block"><a href="https://panel.aidanoh.art/newnote.php?playername=<?php echo $playername; ?>&playerid=<?php echo $usersession; ?>"> CREATE NEW NOTE</a></button>
                 </div>
             </div>
         </div>
