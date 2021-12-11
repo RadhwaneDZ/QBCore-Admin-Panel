@@ -1,7 +1,11 @@
 <?php
-require_once(__DIR__ . "/config.php");
+require __DIR__ . "/functions/functions.php";
+require __DIR__ . "/functions/discord.php";
+require __DIR__ . "/config.php";
 
 ?>
+
+
 
 <!doctype html>
 <html lang="en">

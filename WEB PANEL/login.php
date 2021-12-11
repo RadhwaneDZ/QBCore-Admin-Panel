@@ -1,6 +1,9 @@
 <?php
-require_once(__DIR__ . "/config.php");
-session_start();
+require __DIR__ . "/config.php";
+require __DIR__ . "/functions/discord.php";
+require __DIR__ . "/functions/functions.php";
+
+$auth_url = url($client_id, $redirect_url, $scopes);
 ?>
 
 <!doctype html>
@@ -29,7 +32,7 @@ session_start();
 
                     <div class="card-body">Login using Discord now to get access to the panel. Please note that any unathorized attempts will be logged.<br>
                         <br><button class="btn btn-primary">
-                            <b>LOGIN WITH DISCORD</b>   
+                            <a href="<?php echo $auth_url ?>" <b> LOGIN WITH DISCORD</b></a>   
                         </button>
                     </div>
 
