@@ -89,7 +89,6 @@ $Stat3 = $result3->fetchColumn();
                 <div class="card-header">CURRENT SESSION INFO (FOR TESTING PURPOSES)</div>
                     <div class="card-body">
                     <p><b>Discord ID: </b><?php echo $_SESSION['user_id'] ?> </p>
-                    <p><b>Discord ID: </b><?php echo $_SESSION['staffname'] ?> </p>
                     <p><b>Discord Name:</b> <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
                     <p><b>Discord Profile Picture ID: </b><?php echo $_SESSION['user_avatar'] ?> </p>
                     <p><b>Discord Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p></b>

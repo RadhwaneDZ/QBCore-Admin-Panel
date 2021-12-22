@@ -1,10 +1,4 @@
 <?php
-/* Discord Oauth v.4.1
- * This file contains the core functions of the oauth2 script.
- * @author : MarkisDev
- * @copyright : https://markis.dev
- */
-
 # Starting session so we can store all the variables
 session_start();
 

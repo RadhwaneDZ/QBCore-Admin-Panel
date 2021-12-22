@@ -35,14 +35,14 @@
                         <?php
                             $json = file_get_contents('http://74.91.124.242:30120/players.json'); /* USING SOME RANDOM SERVER TO GET PLAYER LIST FOR NOW - https://www.gs4u.net/en/s/145045.html */
                             $data = json_decode($json, true);
-                            foreach ($data as $key => $newrow) {
-                                
+
+                            foreach($data as $newrow) {
                             echo 
                             '<td>'. $newrow["id"] .'</td>
                             <td>'. $newrow["name"] .'</td>
-                            <td>'. $newrow["identifiers"] .'</td>
-                            <td>'. $newrow["j"] .'</td>
-                            <td>'. $newrow["j"] .'</td>
+                            <td>'. $newrow["identifiers"][1] .'</td>
+                            <td>'. $newrow["identifiers"][4] .'</td>
+                            <td>'. $newrow["identifiers"][0] .'</td>
                             <td>'. $newrow["ping"] .'</td>
                             </tr>';
                             }
