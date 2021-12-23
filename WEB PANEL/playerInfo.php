@@ -1,7 +1,6 @@
 <?php
-require __DIR__ . "/functions/functions.php";
-require __DIR__ . "/functions/discord.php";
-require __DIR__ . "/config.php";
+include 'functions/main.php';
+CheckUserLoggedIn($pdo);
 ?>
 
 <!doctype html>
