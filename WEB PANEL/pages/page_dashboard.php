@@ -1,15 +1,11 @@
 <?php
-try{
-    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
-}
-$result = $database->query("SELECT count(*) FROM players"); 
+$result = $pdo->query("SELECT count(*) FROM players"); 
 $Stat1 = $result->fetchColumn();
 
-$result2 = $database->query("SELECT count(*) FROM adminpanel_players"); 
+$result2 = $pdo->query("SELECT count(*) FROM adminpanel_players"); 
 $Stat2 = $result2->fetchColumn();
 
-$result3 = $database->query("SELECT count(*) FROM adminpanel_bans"); 
+$result3 = $pdo->query("SELECT count(*) FROM adminpanel_bans"); 
 $Stat3 = $result3->fetchColumn();
 
 ?>
@@ -88,20 +84,11 @@ $Stat3 = $result3->fetchColumn();
             <div class="card text-center">
                 <div class="card-header">CURRENT SESSION INFO (FOR TESTING PURPOSES)</div>
                     <div class="card-body">
-                    <p><b>Discord ID: </b><?php echo $_SESSION['user_id'] ?> </p>
-                    <p><b>Discord Name:</b> <?php echo $_SESSION['username'] . '#' . $_SESSION['discrim']; ?></p>
-                    <p><b>Discord Profile Picture ID: </b><?php echo $_SESSION['user_avatar'] ?> </p>
-                    <p><b>Discord Profile Picture : <img src="https://cdn.discordapp.com/avatars/<?php $extention = is_animated($_SESSION['user_avatar']);echo $_SESSION['user_id'] . "/" . $_SESSION['user_avatar'] . $extention; ?>" /></p></b>
-                    <p><b>Staff Unique ID:</b> <?php echo $_SESSION['staff_id']; ?></p>
-                    <?php
-                    if (isset($_SESSION['user'])) {
-                        echo '<a href="functions/logout.php"><button class="primary">YOU ARE LOGGED IN</button></a>';
-                    } else {
-                        echo "<a href='/login.php'><button class='primary'>YOU ARE NOT LOGGED IN</button></a>";
-                    }
-                    
-                    ?>
-                    
+                    <p><b>Staff Name: </b><?=$_SESSION['name']?> </p>
+                    <p><b>Staff ID: </b><?=$_SESSION['id']?> </p>
+                    <p><b>Staff Role: </b><?=$_SESSION['role']?> </p>
+                    <p><b>Discord ID: </b><?=$_SESSION['discord']?> </p>
+                    <p><b>Rockstar License: </b><?=$_SESSION['rockstar']?> </p>
                 </div>
             </div>
         </div>
