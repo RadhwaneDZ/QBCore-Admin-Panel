@@ -1,10 +1,3 @@
-<?php
-try{
-    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
-}
-?>
-
 <div class="app-main__outer">
 <div class="app-main__inner">
 <div class="app-page-title">
@@ -40,11 +33,11 @@ try{
                         </thead>
                     <tbody>
                         <?php
-                            $uniquevehicle = $database->query("SELECT * FROM player_vehicles");
+                            $uniquevehicle = $pdo->query("SELECT * FROM player_vehicles");
                             foreach($uniquevehicle as $newrow){
                                 $citid = $newrow['citizenid'];
 
-                            $charname = $database->query("SELECT * FROM players WHERE citizenid='$citid'");
+                            $charname = $pdo->query("SELECT * FROM players WHERE citizenid='$citid'");
                             foreach($charname as $newrow2){
                                 $json = $newrow2["charinfo"];
                                 $charactername = json_decode($json);

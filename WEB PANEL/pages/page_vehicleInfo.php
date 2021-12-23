@@ -1,11 +1,6 @@
 <?php
-try{
-    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
-}
-
 $vehicle = $_GET["plate"];
-$result = $database->query("SELECT * FROM player_vehicles WHERE plate = '$vehicle'");
+$result = $pdo->query("SELECT * FROM player_vehicles WHERE plate = '$vehicle'");
 foreach($result as $row) 
 {
     $vehicleid = $row["id"];

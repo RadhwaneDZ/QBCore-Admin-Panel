@@ -1,11 +1,6 @@
 <?php
-try{
-    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
-}
-
 $citizenid = $_GET["citizenid"];
-$character = $database->query("SELECT * FROM players WHERE citizenid = '$citizenid'");
+$character = $pdo->query("SELECT * FROM players WHERE citizenid = '$citizenid'");
 foreach($character as $row){
     $charid = $row["id"];
     $rockstar = $row["license"];
@@ -140,7 +135,7 @@ foreach($character as $row){
                         <tbody>
                         <tr>
                             <?php
-                                $apartment = $database->query("SELECT * FROM apartments WHERE citizenid='$citizenid'");
+                                $apartment = $pdo->query("SELECT * FROM apartments WHERE citizenid='$citizenid'");
                                 foreach($apartment as $newrow){
                                 
                                 echo 

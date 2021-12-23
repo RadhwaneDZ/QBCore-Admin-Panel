@@ -1,11 +1,6 @@
 <?php
-try{
-    $database = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-    $database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);} catch(PDOException $e) {echo "Connection failed: " . $e->getMessage();
-}
-
 $usersession = $_GET["playerId"];
-$result = $database->query("SELECT * FROM adminpanel_players WHERE ID = '$usersession'");
+$result = $pdo->query("SELECT * FROM adminpanel_players WHERE ID = '$usersession'");
 foreach($result as $row) 
 {
     $userID = $row["id"];
@@ -70,7 +65,7 @@ foreach($result as $row)
                         <tbody>
                         <tr>
                             <?php
-                                $character = $database->query("SELECT * FROM players WHERE license='$license'");
+                                $character = $pdo->query("SELECT * FROM players WHERE license='$license'");
                                 foreach($character as $newrow){
                                     $json = $newrow["charinfo"];
                                     $charactername = json_decode($json);
@@ -117,7 +112,7 @@ foreach($result as $row)
             <tbody>
             <tr>
             <?php
-                $note = $database->query("SELECT * FROM adminpanel_notes WHERE noteid='$userID'");
+                $note = $pdo->query("SELECT * FROM adminpanel_notes WHERE noteid='$userID'");
                 foreach($note as $newrow){
                 
                 echo 
@@ -151,7 +146,7 @@ foreach($result as $row)
             <tbody>
             <tr>
             <?php
-                $note = $database->query("SELECT * FROM adminpanel_bans WHERE banid='$userID'");
+                $note = $pdo->query("SELECT * FROM adminpanel_bans WHERE banid='$userID'");
                 foreach($note as $newrow){
                 
                 echo 
