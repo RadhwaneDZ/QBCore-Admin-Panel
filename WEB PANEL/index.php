@@ -8,7 +8,7 @@ if (isset($_SESSION['loggedin'])) {
 // Also check if the user is remembered, if so redirect them to the home page
 if (isset($_COOKIE['rememberme']) && !empty($_COOKIE['rememberme'])) {
 	// If the remember me cookie matches one in the database then we can update the session variables and the user will be logged-in.
-	$stmt = $pdo->prepare('SELECT * FROM accounts WHERE rememberme = ?');
+	$stmt = $pdo->prepare('SELECT * FROM adminpanel_staff WHERE rememberme = ?');
 	$stmt->execute([ $_COOKIE['rememberme'] ]);
 	$account = $stmt->fetch(PDO::FETCH_ASSOC);
 	if ($account) {
